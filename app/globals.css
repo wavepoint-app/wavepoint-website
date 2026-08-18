@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'SF Compact';
+  src: url('/fonts/SFCompact.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f7f6f2;
+  color: #0f172a;
+}
+
+@keyframes wave-shift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes hand-wave {
+  0%,
+  100% {
+    transform: translateY(var(--hand-pivot-y)) rotate(0deg) translateY(calc(-1 * var(--hand-pivot-y)));
+  }
+  25% {
+    transform: translateY(var(--hand-pivot-y)) rotate(8deg) translateY(calc(-1 * var(--hand-pivot-y)));
+  }
+  75% {
+    transform: translateY(var(--hand-pivot-y)) rotate(-8deg) translateY(calc(-1 * var(--hand-pivot-y)));
+  }
+}
+
+.wave-track {
+  animation: wave-shift var(--wave-ms, 10000ms) linear infinite;
+  will-change: transform;
+}
+
+.hand-wave {
+  animation: hand-wave 3.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-track,
+  .hand-wave {
+    animation: none;
+  }
+}
