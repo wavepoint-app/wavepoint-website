@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { AnimatedWaves } from '@/components/AnimatedWaves';
+import { SiteFooter } from '@/components/SiteChrome';
 import { WaitlistForm } from '@/components/WaitlistForm';
 import { WavingLogo } from '@/components/WavingLogo';
 
@@ -155,14 +156,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="border-t border-line bg-white px-5 py-8 md:px-8">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-          <p className="text-sm font-medium text-ink-subtle">
-            Wavepoint · Indoor navigation for campus buildings
-          </p>
-          <p className="text-sm font-medium text-ink-dim">Built at Texas Convergent</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
