@@ -13,7 +13,9 @@ export default function PrivacyPage() {
         <p>
           Wavepoint is a campus navigation and social app. This policy describes the data the
           Wavepoint mobile app and this website collect, why we collect it, and how you can delete
-          it. We do not sell your data and we do not use advertising or analytics SDKs.
+          it. We do not sell your data and we do not use advertising or analytics SDKs. Wavepoint
+          is an independent student project and is not affiliated with, endorsed by, or sponsored
+          by The University of Texas at Austin.
         </p>
       </LegalSection>
 

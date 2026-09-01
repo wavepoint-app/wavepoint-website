@@ -11,8 +11,9 @@ export default function TermsPage() {
     <LegalPage eyebrow="Legal" title="Terms of Use" updated="August 30, 2026">
       <LegalSection title="Using Wavepoint">
         <p>
-          Wavepoint is a campus navigation app with optional social features. By creating an
-          account you agree to these terms and to our{' '}
+          Wavepoint is a campus navigation app with optional social features. It is not
+          affiliated with, endorsed by, or sponsored by The University of Texas at Austin.
+          By creating an account you agree to these terms and to our{' '}
           <a className="font-semibold text-primary" href="/privacy">
             Privacy Policy
           </a>

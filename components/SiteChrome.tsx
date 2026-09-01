@@ -30,9 +30,14 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-line bg-white px-5 py-8 md:px-8">
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <p className="text-sm font-medium text-ink-subtle">
-          Wavepoint · Indoor navigation for campus buildings
-        </p>
+        <div>
+          <p className="text-sm font-medium text-ink-subtle">
+            Wavepoint · Indoor navigation for campus buildings
+          </p>
+          <p className="mt-1 text-xs font-medium text-ink-dim">
+            Not affiliated with, endorsed by, or sponsored by The University of Texas at Austin.
+          </p>
+        </div>
         <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-ink-subtle">
           {FOOTER_LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="hover:text-primary">
