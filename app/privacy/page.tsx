@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { LegalPage, LegalSection } from '@/components/SiteChrome';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Wavepoint',
+  title: 'Privacy Policy | Wavepoint',
   description: 'How Wavepoint collects, uses, and deletes your data.',
 };
 

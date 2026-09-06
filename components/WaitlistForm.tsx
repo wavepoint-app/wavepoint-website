@@ -4,14 +4,12 @@ import { useState, type FormEvent } from 'react';
 import { cn } from '@/lib/cn';
 
 type Props = {
-  variant?: 'hero' | 'band';
   className?: string;
 };
 
 type Status = 'idle' | 'loading' | 'ok' | 'already' | 'error';
 
-export function WaitlistForm({ variant = 'hero', className }: Props) {
-  const onBand = variant === 'band';
+export function WaitlistForm({ className }: Props) {
   const [status, setStatus] = useState<Status>('idle');
   const [message, setMessage] = useState('');
 
@@ -58,7 +56,7 @@ export function WaitlistForm({ variant = 'hero', className }: Props) {
 
   return (
     <form onSubmit={onSubmit} className={cn('relative w-full max-w-[420px]', className)}>
-      <label htmlFor={`waitlist-email-${variant}`} className="sr-only">
+      <label htmlFor="waitlist-email" className="sr-only">
         Email
       </label>
       <input
@@ -69,37 +67,21 @@ export function WaitlistForm({ variant = 'hero', className }: Props) {
         aria-hidden
         className="pointer-events-none absolute left-[-10000px] h-px w-px overflow-hidden opacity-0"
       />
-      <div
-        className={cn(
-          'flex flex-col gap-2 sm:flex-row sm:items-stretch',
-          onBand ? 'sm:gap-2' : 'sm:gap-2.5'
-        )}
-      >
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-stretch sm:gap-2.5">
         <input
-          id={`waitlist-email-${variant}`}
+          id="waitlist-email"
           type="email"
           name="email"
           required
           autoComplete="email"
           placeholder="you@email.com"
           disabled={busy}
-          className={cn(
-            'min-h-[52px] flex-1 rounded-[16px] border-[1.5px] px-4 text-[15px] font-medium tracking-[-0.07px] outline-none transition',
-            'placeholder:text-ink-faint focus:border-primary disabled:opacity-70',
-            onBand
-              ? 'border-white/25 bg-white text-ink-strong'
-              : 'border-[#E9E5DC] bg-white text-ink-strong'
-          )}
+          className="min-h-[52px] flex-1 rounded-[16px] border-[1.5px] border-[#E9E5DC] bg-white px-4 text-[15px] font-medium tracking-[-0.07px] text-ink-strong outline-none transition placeholder:text-ink-faint focus:border-primary disabled:opacity-70"
         />
         <button
           type="submit"
           disabled={busy}
-          className={cn(
-            'inline-flex min-h-[52px] items-center justify-center gap-2 rounded-[16px] px-[18px] text-[15px] font-bold tracking-[-0.15px] transition active:opacity-85 disabled:opacity-70',
-            onBand
-              ? 'bg-white text-primary shadow-[0_6px_20px_rgba(0,0,0,0.18)]'
-              : 'bg-primary text-white shadow-[0_4px_8px_rgba(11,97,126,0.25)]'
-          )}
+          className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-[16px] bg-primary px-[18px] text-[15px] font-bold tracking-[-0.15px] text-white shadow-[0_4px_8px_rgba(11,97,126,0.25)] transition active:opacity-85 disabled:opacity-70 hover-lift"
         >
           {busy ? 'Joining…' : 'Join the waitlist'}
           {!busy && (
@@ -121,13 +103,7 @@ export function WaitlistForm({ variant = 'hero', className }: Props) {
           aria-live="polite"
           className={cn(
             'mt-2.5 text-left text-[13.5px] font-medium',
-            status === 'error'
-              ? onBand
-                ? 'text-white'
-                : 'text-red-600'
-              : onBand
-                ? 'text-white/85'
-                : 'text-ink-muted'
+            status === 'error' ? 'text-red-600' : 'text-ink-muted'
           )}
         >
           {message}

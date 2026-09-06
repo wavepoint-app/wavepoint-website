@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { LegalPage, LegalSection } from '@/components/SiteChrome';
 
 export const metadata: Metadata = {
-  title: 'Terms of Use — Wavepoint',
+  title: 'Terms of Use | Wavepoint',
   description: 'Community standards and acceptable use for Wavepoint.',
 };
 
@@ -55,7 +55,7 @@ export default function TermsPage() {
       <LegalSection title="Location and safety">
         <p>
           Live GPS is used only while the app is open, for navigation. Shared pins show a building
-          (and optional room) to friends you choose — not a live trail. Wavepoint is not an
+          (and optional room) to friends you choose, not a live trail. Wavepoint is not an
           emergency service. Call local emergency numbers if you need help.
         </p>
       </LegalSection>

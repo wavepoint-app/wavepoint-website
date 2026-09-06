@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { LegalPage, LegalSection } from '@/components/SiteChrome';
 
 export const metadata: Metadata = {
-  title: 'Support — Wavepoint',
+  title: 'Support | Wavepoint',
   description: 'Contact Wavepoint support and request account deletion.',
 };
 
@@ -15,7 +15,7 @@ export default function SupportPage() {
           <a className="font-semibold text-primary" href="mailto:support@wavepoint.app">
             support@wavepoint.app
           </a>
-          . We read every message and aim to reply within two business days.
+          . We read every message and aim to reply as soon as possible.
         </p>
       </LegalSection>
 
@@ -30,7 +30,7 @@ export default function SupportPage() {
         </p>
         <p>
           <a
-            className="inline-flex rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-white shadow-[0_4px_8px_rgba(11,97,126,0.25)]"
+            className="hover-lift inline-flex rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-white shadow-[0_4px_8px_rgba(11,97,126,0.25)]"
             href="mailto:support@wavepoint.app?subject=Please%20delete%20my%20Wavepoint%20account"
           >
             Request deletion by email
