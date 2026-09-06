@@ -13,6 +13,7 @@ export function StoryChapter({
   points,
   inverted = false,
   muted = false,
+  id,
 }: {
   eyebrow: string;
   title: string;
@@ -20,11 +21,14 @@ export function StoryChapter({
   points: readonly Point[];
   inverted?: boolean;
   muted?: boolean;
+  id?: string;
 }) {
   return (
     <section
+      id={id}
       className={cn(
         'px-5 py-16 md:flex md:min-h-[70vh] md:items-center md:px-8 md:py-24',
+        id && 'scroll-mt-[80px]',
         inverted ? 'bg-primary text-white' : muted ? 'bg-surface-muted text-ink-strong' : 'bg-canvas text-ink-strong'
       )}
     >

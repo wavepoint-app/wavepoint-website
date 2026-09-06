@@ -43,9 +43,9 @@ export function HowItWorks() {
   }
 
   return (
-    <section id="how" className="scroll-mt-24 bg-surface-muted px-5 py-16 md:min-h-[70vh] md:px-8 md:py-24">
+    <section id="how" className="scroll-mt-24 bg-[#D5E7ED] px-5 py-16 md:min-h-[70vh] md:px-8 md:py-24">
       <Reveal className="mx-auto max-w-6xl">
-        <p className="text-xs font-bold uppercase tracking-[1.2px] text-ink-muted">How it works</p>
+        <p className="text-xs font-bold uppercase tracking-[1.2px] text-primary">How it works</p>
         <h2 className="mt-3 text-[32px] font-extrabold tracking-[-1px] text-ink-strong md:text-[52px] md:tracking-[-1.6px]">
           Search. Walk. Arrive.
         </h2>
@@ -72,8 +72,8 @@ export function HowItWorks() {
                   className={cn(
                     'hover-soft shrink-0 rounded-xl px-4 py-3 text-left',
                     selected
-                      ? 'bg-white text-primary shadow-[0_1px_6px_rgba(15,23,42,0.06)]'
-                      : 'text-ink-subtle hover:bg-white/70 hover:text-ink-strong'
+                      ? 'bg-primary text-white shadow-[0_4px_8px_rgba(11,97,126,0.25)]'
+                      : 'text-primary hover:bg-primary-soft hover:text-primary-dark'
                   )}
                 >
                   <span className="block text-[12px] font-bold tracking-[0.08em] text-secondary">{item.n}</span>
@@ -87,7 +87,7 @@ export function HowItWorks() {
             id={`${baseId}-panel`}
             role="tabpanel"
             aria-labelledby={`${baseId}-tab-${index}`}
-            className="rounded-sheet border border-line bg-white p-8 md:min-h-[240px] md:p-10"
+            className="rounded-sheet border border-primary-tint bg-primary-soft p-8 md:min-h-[240px] md:p-10"
           >
             <p className="text-[13px] font-bold tracking-[0.08em] text-secondary">{step.n}</p>
             <h3 className="mt-3 text-[28px] font-extrabold tracking-[-0.8px] text-ink-strong md:text-[36px]">

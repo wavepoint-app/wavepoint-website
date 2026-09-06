@@ -9,7 +9,6 @@ import { cn } from '@/lib/cn';
 const NAV_LINKS = [
   { href: '/#product', label: 'Product' },
   { href: '/about', label: 'About' },
-  { href: '/careers', label: 'Careers' },
 ] as const;
 
 function isActive(pathname: string, href: string) {
@@ -44,7 +43,7 @@ export function SiteNav() {
   }, [open]);
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3 md:gap-7">
       <nav className="hidden items-center gap-7 text-sm font-semibold text-ink-body md:flex">
         {NAV_LINKS.map((link) => (
           <Link

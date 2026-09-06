@@ -68,16 +68,35 @@ export function WaitlistForm({ className }: Props) {
         className="pointer-events-none absolute left-[-10000px] h-px w-px overflow-hidden opacity-0"
       />
       <div className="flex flex-col gap-2 sm:flex-row sm:items-stretch sm:gap-2.5">
-        <input
-          id="waitlist-email"
-          type="email"
-          name="email"
-          required
-          autoComplete="email"
-          placeholder="you@email.com"
-          disabled={busy}
-          className="min-h-[52px] flex-1 rounded-[16px] border-[1.5px] border-[#E9E5DC] bg-white px-4 text-[15px] font-medium tracking-[-0.07px] text-ink-strong outline-none transition placeholder:text-ink-faint focus:border-primary disabled:opacity-70"
-        />
+        <div className="email-outline relative min-h-[52px] flex-1">
+          <input
+            id="waitlist-email"
+            type="email"
+            name="email"
+            required
+            autoComplete="email"
+            placeholder="you@email.com"
+            disabled={busy}
+            className="relative z-10 min-h-[52px] w-full rounded-[16px] border-[1.5px] border-[#E9E5DC] bg-white px-4 text-[15px] font-medium tracking-[-0.07px] text-ink-strong outline-none transition-[border-color,box-shadow] duration-300 placeholder:text-ink-faint focus:border-transparent disabled:opacity-70"
+          />
+          <svg
+            className="email-outline-stroke pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+            aria-hidden
+          >
+            <rect
+              x="1"
+              y="1"
+              rx="16"
+              ry="16"
+              fill="none"
+              stroke="#0B617E"
+              strokeWidth="2"
+              pathLength="1"
+              vectorEffect="non-scaling-stroke"
+              className="h-[calc(100%-2px)] w-[calc(100%-2px)]"
+            />
+          </svg>
+        </div>
         <button
           type="submit"
           disabled={busy}

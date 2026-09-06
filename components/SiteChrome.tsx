@@ -10,8 +10,13 @@ const EXPLORE_LINKS = [
 ] as const;
 
 const LEGAL_LINKS = [
-  { href: '/terms', label: 'Terms of Use' },
-  { href: '/privacy', label: 'Privacy Policy' },
+  { href: '/terms', label: 'Terms' },
+  { href: '/privacy', label: 'Privacy' },
+] as const;
+
+const CONTACT_LINKS = [
+  { href: 'mailto:support@wavepoint.app', label: 'Email' },
+  { href: 'https://www.instagram.com/wavepointnavigation', label: 'Instagram' },
 ] as const;
 
 export function SiteHeader() {
@@ -50,6 +55,7 @@ export function SiteFooter() {
         <div className="flex flex-wrap gap-8">
           <FooterCluster title="Explore" links={EXPLORE_LINKS} />
           <FooterCluster title="Legal" links={LEGAL_LINKS} />
+          <FooterCluster title="Contact" links={CONTACT_LINKS} />
         </div>
       </div>
     </footer>
@@ -67,16 +73,31 @@ function FooterCluster({
     <nav aria-label={title}>
       <p className="text-xs font-bold uppercase tracking-[1.2px] text-ink-dim">{title}</p>
       <ul className="mt-3 flex flex-col gap-2">
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              className="hover-underline text-sm font-semibold text-ink-subtle hover:text-primary"
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
+        {links.map((link) => {
+          const className =
+            'hover-underline text-sm font-semibold text-ink-subtle hover:text-primary';
+          const external = link.href.startsWith('http') || link.href.startsWith('mailto:');
+
+          return (
+            <li key={link.href}>
+              {external ? (
+                <a
+                  href={link.href}
+                  className={className}
+                  {...(link.href.startsWith('http')
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link href={link.href} className={className}>
+                  {link.label}
+                </Link>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

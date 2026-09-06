@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { cn } from '@/lib/cn';
 
-const LOGO_BOX_W = 260;
-const LOGO_BOX_H = 170;
+const LOGO_BOX_W = 364;
+const LOGO_BOX_H = 238;
 const LOGO_SRC_W = 626;
 const LOGO_SRC_H = 399;
 const LOGO_SCALE = Math.min(LOGO_BOX_W / LOGO_SRC_W, LOGO_BOX_H / LOGO_SRC_H);
@@ -13,6 +13,14 @@ const CIRCLE_LEFT = LOGO_OFFSET_X + CIRCLE_SRC.x * LOGO_SCALE;
 const CIRCLE_TOP = LOGO_OFFSET_Y + CIRCLE_SRC.y * LOGO_SCALE;
 const CIRCLE_SIZE = CIRCLE_SRC.size * LOGO_SCALE;
 const HAND_PIVOT_Y = CIRCLE_SIZE * 0.16;
+const TEAL = '#0B617E';
+
+const circleStyle = {
+  left: CIRCLE_LEFT,
+  top: CIRCLE_TOP,
+  width: CIRCLE_SIZE,
+  height: CIRCLE_SIZE,
+} as const;
 
 export function WavingLogo({ className }: { className?: string }) {
   return (
@@ -26,30 +34,28 @@ export function WavingLogo({ className }: { className?: string }) {
         width={LOGO_BOX_W}
         height={LOGO_BOX_H}
         className="h-full w-full object-contain"
+        unoptimized
         priority
       />
-      <div
-        className="pointer-events-none absolute overflow-hidden rounded-full"
-        style={{
-          left: CIRCLE_LEFT,
-          top: CIRCLE_TOP,
-          width: CIRCLE_SIZE,
-          height: CIRCLE_SIZE,
-        }}
-      >
-        <div
-          className="hand-wave h-full w-full"
-          style={{ ['--hand-pivot-y' as string]: `${HAND_PIVOT_Y}px` }}
-        >
-          <Image
-            src="/logos/wavepointHand.png"
-            alt=""
-            width={Math.round(CIRCLE_SIZE)}
-            height={Math.round(CIRCLE_SIZE)}
-            className="h-full w-full object-contain"
-          />
+      <div className="hand-clip pointer-events-none absolute" style={{ ...circleStyle, backgroundColor: TEAL }}>
+        <div className="hand-clip-inner">
+          <div
+            className="hand-wave h-full w-full"
+            style={{ ['--hand-pivot-y' as string]: `${HAND_PIVOT_Y}px` }}
+          >
+            {/* Native img: Next/Image wrappers can skip overflow clipping while rotating. */}
+            <img
+              src="/logos/wavepointHand.png"
+              alt=""
+              width={Math.round(CIRCLE_SIZE)}
+              height={Math.round(CIRCLE_SIZE)}
+              className="block h-full w-full object-contain"
+              draggable={false}
+            />
+          </div>
         </div>
       </div>
+      <div className="hand-rim pointer-events-none absolute rounded-full" style={circleStyle} />
     </div>
   );
 }

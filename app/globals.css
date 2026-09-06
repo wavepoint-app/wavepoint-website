@@ -46,9 +46,29 @@ body {
   will-change: transform;
 }
 
+.hand-clip {
+  overflow: hidden;
+  border-radius: 50%;
+  contain: paint;
+  -webkit-mask-image: radial-gradient(farthest-side, #000 99.6%, transparent);
+  mask-image: radial-gradient(farthest-side, #000 99.6%, transparent);
+}
+
+.hand-clip-inner {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
 .hand-wave {
   animation: hand-wave 3.6s ease-in-out infinite;
-  will-change: transform;
+}
+
+.hand-rim {
+  box-shadow:
+    inset 0 0 0 3px #0b617e,
+    0 0 0 1px #0b617e;
 }
 
 .reveal {
@@ -134,6 +154,23 @@ body {
   transform: translateY(-1px);
 }
 
+.email-outline-stroke rect {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.email-outline:hover .email-outline-stroke rect,
+.email-outline:focus-within .email-outline-stroke rect {
+  stroke-dashoffset: 0;
+}
+
+.email-outline:hover input:not(:disabled),
+.email-outline:focus-within input:not(:disabled) {
+  border-color: rgba(11, 97, 126, 0.35);
+  box-shadow: 0 0 0 4px rgba(11, 97, 126, 0.1);
+}
+
 .legal-copy a:not(.hover-lift) {
   position: relative;
   display: inline;
@@ -167,7 +204,9 @@ body {
   .hover-lift,
   .hover-arrow .hover-arrow-icon,
   .hover-soft,
-  .legal-copy a:not(.hover-lift) {
+  .legal-copy a:not(.hover-lift),
+  .email-outline-stroke rect,
+  .email-outline input {
     transition: none;
   }
 
