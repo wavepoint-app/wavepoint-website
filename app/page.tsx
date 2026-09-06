@@ -44,12 +44,12 @@ export default function HomePage() {
 
       <StoryChapter
         eyebrow="Hallway, not GPS"
-        title="Routes on the floor plan,"
-        titleLine2="not a blue dot in the hall."
+        title="Routes you can see,"
+        titleLine2="not just a dot."
         points={[
           {
             title: 'Indoor pathfinding',
-            body: 'Search a room and get a corridor-centered route on the actual floor plan, not a blue dot guessing in a hallway.',
+            body: 'Search a room and get an optimized route while being able to see the actual building map.',
           },
           {
             title: 'Campus, then indoors',
@@ -66,7 +66,7 @@ export default function HomePage() {
         points={[
           {
             title: 'Multi-floor routes',
-            body: 'Paths cross floors via elevators and stairs, with step-by-step directions and automatic floor switching.',
+            body: 'Paths cross floors via elevators and stairs, with step-by-step directions and floor switching.',
           },
           {
             title: 'Walk it live',
