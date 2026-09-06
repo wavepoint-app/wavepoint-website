@@ -12,11 +12,13 @@
 
 html {
   scroll-behavior: auto;
+  overscroll-behavior: none;
 }
 
 body {
   background: #f7f6f2;
   color: #0f172a;
+  overscroll-behavior: none;
 }
 
 @keyframes wave-shift {

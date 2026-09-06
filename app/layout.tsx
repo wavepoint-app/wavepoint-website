@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { SiteFooter, SiteHeader } from '@/components/SiteChrome';
 import { HashScroll } from '@/components/HashScroll';
+import { InertiaScroll } from '@/components/InertiaScroll';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <body className="min-h-screen bg-canvas font-sans antialiased" suppressHydrationWarning>
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
+          <InertiaScroll />
           <HashScroll />
           <div className="flex-1">{children}</div>
           <SiteFooter />

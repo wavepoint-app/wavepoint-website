@@ -2,23 +2,24 @@
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react';
+import { inertiaPinTop, inertiaScrollToId } from '@/components/InertiaScroll';
 
 export function scrollToWaitlist() {
-  document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  inertiaScrollToId('waitlist');
 }
 
 export function scrollToProduct() {
-  document.getElementById('product')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  inertiaScrollToId('product');
 }
 
 function scrollToHash() {
   const id = window.location.hash.slice(1);
   if (!id) return;
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  inertiaScrollToId(id);
 }
 
 function pinTop() {
-  window.scrollTo(0, 0);
+  inertiaPinTop();
 }
 
 export function HashScroll() {
