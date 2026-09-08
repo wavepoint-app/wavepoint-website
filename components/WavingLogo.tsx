@@ -37,7 +37,11 @@ export function WavingLogo({ className }: { className?: string }) {
         unoptimized
         priority
       />
-      <div className="hand-clip pointer-events-none absolute" style={{ ...circleStyle, backgroundColor: TEAL }}>
+      <div
+        className="pointer-events-none absolute rounded-full"
+        style={{ ...circleStyle, backgroundColor: TEAL, transform: 'scale(1.04)' }}
+      />
+      <div className="hand-clip pointer-events-none absolute" style={circleStyle}>
         <div className="hand-clip-inner">
           <div
             className="hand-wave h-full w-full"

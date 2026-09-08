@@ -52,8 +52,10 @@ body {
   overflow: hidden;
   border-radius: 50%;
   contain: paint;
-  -webkit-mask-image: radial-gradient(farthest-side, #000 99.6%, transparent);
-  mask-image: radial-gradient(farthest-side, #000 99.6%, transparent);
+  isolation: isolate;
+  /* Inset the hand so PNG fringe / subpixel AA never reaches the disc edge. */
+  -webkit-mask-image: radial-gradient(farthest-side, #000 97%, transparent 99.2%);
+  mask-image: radial-gradient(farthest-side, #000 97%, transparent 99.2%);
 }
 
 .hand-clip-inner {
@@ -69,8 +71,8 @@ body {
 
 .hand-rim {
   box-shadow:
-    inset 0 0 0 3px #0b617e,
-    0 0 0 1px #0b617e;
+    inset 0 0 0 5px #0b617e,
+    0 0 0 2px #0b617e;
 }
 
 .reveal {
