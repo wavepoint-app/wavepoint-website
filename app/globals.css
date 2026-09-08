@@ -91,16 +91,22 @@ body {
 @keyframes page-enter {
   from {
     opacity: 0;
-    transform: translateY(16px);
   }
   to {
     opacity: 1;
-    transform: none;
   }
 }
 
 .page-enter {
   animation: page-enter 0.6s ease both;
+}
+
+.hero-screen {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: calc(100svh - 5rem);
+  height: calc(100dvh - 5rem);
 }
 
 .hover-underline {
@@ -174,8 +180,8 @@ body {
 }
 
 .email-outline-stroke rect {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
   transition: stroke-dashoffset 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 

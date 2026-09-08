@@ -86,14 +86,13 @@ export function WaitlistForm({ className }: Props) {
             <rect
               x="1"
               y="1"
+              width="100%"
+              height="100%"
               rx="16"
               ry="16"
               fill="none"
               stroke="#0B617E"
               strokeWidth="2"
-              pathLength="1"
-              vectorEffect="non-scaling-stroke"
-              className="h-[calc(100%-2px)] w-[calc(100%-2px)]"
             />
           </svg>
         </div>

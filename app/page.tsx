@@ -8,17 +8,14 @@ import { WavingLogo } from '@/components/WavingLogo';
 export default function HomePage() {
   return (
     <main>
-      <section
-        id="waitlist"
-        className="flex h-[calc(100svh-80px)] flex-col overflow-hidden scroll-mt-[80px]"
-      >
-        <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col items-center justify-center px-5 py-2 text-center md:px-8 md:py-3">
-          <div className="relative mb-2 h-[196px] w-[299px] shrink-0 md:mb-3 md:h-[238px] md:w-[364px]">
-            <div className="absolute left-0 top-0 origin-top-left scale-[0.82] md:scale-100">
+      <section id="waitlist" className="hero-screen scroll-mt-[80px]">
+        <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col items-center justify-center px-5 py-3 text-center md:px-8">
+          <div className="relative mb-2 h-[132px] w-[218px] shrink-0 md:mb-3 md:h-[238px] md:w-[364px]">
+            <div className="absolute left-0 top-0 origin-top-left scale-[0.6] md:scale-100">
               <WavingLogo />
             </div>
           </div>
-          <h1 className="max-w-[340px] text-[28px] font-bold leading-[1.12] tracking-[-0.8px] text-[#16140F] md:max-w-none md:text-[44px] md:tracking-[-1.4px] lg:text-[35px]">
+          <h1 className="max-w-[320px] text-[26px] font-bold leading-[1.12] tracking-[-0.8px] text-[#16140F] md:max-w-none md:text-[44px] md:tracking-[-1.4px] lg:text-[35px]">
             Making navigation
             <br />
             <span className="italic text-primary">a breeze.</span>
@@ -27,10 +24,10 @@ export default function HomePage() {
             Indoor navigation for campus buildings. Find friends, drop pins, and get where you are
             going without breaking your stride.
           </p>
-          <WaitlistForm className="mx-auto mt-3 md:mt-5" />
+          <WaitlistForm className="mx-auto mt-3 w-full md:mt-5" />
           <a
             href="#how"
-            className="hover-underline hover-arrow mt-2 text-sm font-semibold text-primary md:mt-3"
+            className="hover-underline hover-arrow relative z-10 mt-3 mb-1 text-sm font-semibold text-primary md:mt-3"
           >
             See how it works
             <span className="hover-arrow-icon" aria-hidden>

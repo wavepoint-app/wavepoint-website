@@ -23,14 +23,14 @@ const CONTACT_LINKS = [
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 h-20 bg-canvas">
-      <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-5 md:px-8">
-        <HomeLogoLink className="flex shrink-0 items-center">
+      <div className="mx-auto flex h-full max-w-6xl items-center justify-between gap-3 px-4 md:px-8">
+        <HomeLogoLink className="flex min-w-0 shrink items-center">
           <Image
             src="/logos/wavepointTop.png"
             alt="Wavepoint"
             width={220}
             height={56}
-            className="h-12 w-auto md:h-14"
+            className="h-10 w-auto md:h-14"
             quality={100}
             priority
           />

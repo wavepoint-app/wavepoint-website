@@ -57,7 +57,7 @@ function WaveLayer({
 
 export function AnimatedWaves() {
   return (
-    <div className="relative h-[140px] shrink-0 overflow-hidden md:h-[180px]" aria-hidden>
+    <div className="relative mt-auto h-[88px] shrink-0 overflow-hidden md:h-[180px]" aria-hidden>
       <WaveLayer d={WAVE_BACK} fill="#C08A5E" opacity={0.45} durationMs={14000} />
       <WaveLayer d={WAVE_MID} fill="#0B617E" opacity={0.6} durationMs={10000} />
       <WaveLayer d={WAVE_FRONT} fill="#0B617E" durationMs={7000} />

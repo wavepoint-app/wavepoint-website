@@ -17,7 +17,7 @@ function isActive(pathname: string, href: string) {
 }
 
 const ctaClass =
-  'hover-lift inline-flex items-center justify-center rounded-xl bg-primary px-3.5 py-2 text-sm font-bold text-white shadow-[0_4px_8px_rgba(11,97,126,0.25)]';
+  'hover-lift inline-flex shrink-0 items-center justify-center rounded-xl bg-primary px-3 py-2 text-[13px] font-bold text-white shadow-[0_4px_8px_rgba(11,97,126,0.25)] md:px-3.5 md:text-sm';
 
 export function SiteNav() {
   const pathname = usePathname();
@@ -44,7 +44,7 @@ export function SiteNav() {
   }, [open]);
 
   return (
-    <div className="flex items-center gap-3 md:gap-7">
+    <div className="flex items-center gap-2 md:gap-7">
       <nav className="hidden items-center gap-7 text-sm font-semibold text-ink-body md:flex">
         {NAV_LINKS.map((link) => (
           <Link

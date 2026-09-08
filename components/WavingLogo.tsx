@@ -9,10 +9,10 @@ const LOGO_SCALE = Math.min(LOGO_BOX_W / LOGO_SRC_W, LOGO_BOX_H / LOGO_SRC_H);
 const CIRCLE_SRC = { x: 199, y: 45, size: 216 };
 const LOGO_OFFSET_X = (LOGO_BOX_W - LOGO_SRC_W * LOGO_SCALE) / 2;
 const LOGO_OFFSET_Y = (LOGO_BOX_H - LOGO_SRC_H * LOGO_SCALE) / 2;
-const CIRCLE_LEFT = LOGO_OFFSET_X + CIRCLE_SRC.x * LOGO_SCALE;
-const CIRCLE_TOP = LOGO_OFFSET_Y + CIRCLE_SRC.y * LOGO_SCALE;
-const CIRCLE_SIZE = CIRCLE_SRC.size * LOGO_SCALE;
-const HAND_PIVOT_Y = CIRCLE_SIZE * 0.16;
+const CIRCLE_SIZE = Math.round(CIRCLE_SRC.size * LOGO_SCALE);
+const CIRCLE_LEFT = Math.round(LOGO_OFFSET_X + CIRCLE_SRC.x * LOGO_SCALE);
+const CIRCLE_TOP = Math.round(LOGO_OFFSET_Y + CIRCLE_SRC.y * LOGO_SCALE);
+const HAND_PIVOT_Y = Math.round(CIRCLE_SIZE * 0.16);
 const TEAL = '#0B617E';
 
 const circleStyle = {
@@ -51,8 +51,8 @@ export function WavingLogo({ className }: { className?: string }) {
             <img
               src="/logos/wavepointHand.png"
               alt=""
-              width={Math.round(CIRCLE_SIZE)}
-              height={Math.round(CIRCLE_SIZE)}
+              width={CIRCLE_SIZE}
+              height={CIRCLE_SIZE}
               className="block h-full w-full object-contain"
               draggable={false}
             />

@@ -50,11 +50,11 @@ export function HowItWorks() {
           Search. Walk. Arrive.
         </h2>
 
-        <div className="mt-10 grid gap-8 md:grid-cols-[minmax(0,240px)_1fr] md:items-start md:gap-12">
+        <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-[minmax(0,240px)_1fr] md:items-start md:gap-12">
           <div
             role="tablist"
             aria-label="How Wavepoint works"
-            className="flex gap-2 overflow-x-auto md:flex-col md:overflow-visible"
+            className="grid grid-cols-3 gap-1.5 md:flex md:flex-col md:gap-2"
           >
             {STEPS.map((item, i) => {
               const selected = i === index;
@@ -70,14 +70,18 @@ export function HowItWorks() {
                   onClick={() => setIndex(i)}
                   onKeyDown={onTabKeyDown}
                   className={cn(
-                    'hover-soft shrink-0 rounded-xl px-4 py-3 text-left',
+                    'hover-soft min-w-0 rounded-xl px-2 py-2.5 text-left md:px-4 md:py-3',
                     selected
                       ? 'bg-primary text-white shadow-[0_4px_8px_rgba(11,97,126,0.25)]'
                       : 'text-primary hover:bg-primary-soft hover:text-primary-dark'
                   )}
                 >
-                  <span className="block text-[12px] font-bold tracking-[0.08em] text-secondary">{item.n}</span>
-                  <span className="mt-1 block text-[16px] font-bold tracking-[-0.2px]">{item.title}</span>
+                  <span className="block text-[11px] font-bold tracking-[0.08em] text-secondary md:text-[12px]">
+                    {item.n}
+                  </span>
+                  <span className="mt-1 block text-[12px] font-bold leading-tight tracking-[-0.2px] md:text-[16px]">
+                    {item.title}
+                  </span>
                 </button>
               );
             })}
@@ -87,7 +91,7 @@ export function HowItWorks() {
             id={`${baseId}-panel`}
             role="tabpanel"
             aria-labelledby={`${baseId}-tab-${index}`}
-            className="rounded-sheet border border-primary-tint bg-primary-soft p-8 md:min-h-[240px] md:p-10"
+            className="rounded-sheet border border-primary-tint bg-primary-soft p-5 md:min-h-[240px] md:p-10"
           >
             <p className="text-[13px] font-bold tracking-[0.08em] text-secondary">{step.n}</p>
             <h3 className="mt-3 text-[28px] font-extrabold tracking-[-0.8px] text-ink-strong md:text-[36px]">
