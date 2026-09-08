@@ -86,8 +86,8 @@ export default function PrivacyPage() {
         <p>
           Campus alerts you submitted stay visible as anonymous reports; your user id is removed
           from them. If you cannot open the app, email{' '}
-          <a className="font-semibold text-primary" href="mailto:support@wavepoint.app">
-            support@wavepoint.app
+          <a className="font-semibold text-primary" href="mailto:wavepointnavigation@gmail.com">
+          wavepointnavigation@gmail.com
           </a>{' '}
           from the address on your account and we will delete it for you.
         </p>
@@ -96,8 +96,8 @@ export default function PrivacyPage() {
       <LegalSection title="Contact">
         <p>
           Questions about this policy:{' '}
-          <a className="font-semibold text-primary" href="mailto:support@wavepoint.app">
-            support@wavepoint.app
+          <a className="font-semibold text-primary" href="mailto:wavepointnavigation@gmail.com">
+          wavepointnavigation@gmail.com
           </a>
           .
         </p>

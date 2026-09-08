@@ -12,8 +12,8 @@ export default function SupportPage() {
       <LegalSection title="Reach us">
         <p>
           Email{' '}
-          <a className="font-semibold text-primary" href="mailto:support@wavepoint.app">
-            support@wavepoint.app
+          <a className="font-semibold text-primary" href="mailto:wavepointnavigation@gmail.com">
+            wavepointnavigation@gmail.com
           </a>
           . We read every message and aim to reply as soon as possible.
         </p>
@@ -31,7 +31,7 @@ export default function SupportPage() {
         <p>
           <a
             className="hover-lift inline-flex rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-white shadow-[0_4px_8px_rgba(11,97,126,0.25)]"
-            href="mailto:support@wavepoint.app?subject=Please%20delete%20my%20Wavepoint%20account"
+            href="mailto:wavepointnavigation@gmail.com?subject=Please%20delete%20my%20Wavepoint%20account"
           >
             Request deletion by email
           </a>

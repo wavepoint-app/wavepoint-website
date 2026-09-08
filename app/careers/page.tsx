@@ -18,8 +18,8 @@ export default function CareersPage() {
       <LegalSection title="Say hello">
         <p>
           Feel free to email{' '}
-          <a className="font-semibold text-primary" href="mailto:support@wavepoint.app">
-            support@wavepoint.app
+          <a className="font-semibold text-primary" href="mailto:wavepointnavigation@gmail.com">
+            wavepointnavigation@gmail.com
           </a>
           .
         </p>

@@ -16,7 +16,7 @@ const LEGAL_LINKS = [
 ] as const;
 
 const CONTACT_LINKS = [
-  { href: 'mailto:support@wavepoint.app', label: 'Email' },
+  { href: 'mailto:wavepointnavigation@gmail.com', label: 'Email' },
   { href: 'https://www.instagram.com/wavepointnavigation', label: 'Instagram' },
 ] as const;
 
