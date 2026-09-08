@@ -1,20 +1,38 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react';
-import { inertiaPinTop, inertiaScrollToId } from '@/components/InertiaScroll';
+import { inertiaPinTop, inertiaScrollToId, inertiaScrollToTop } from '@/components/InertiaScroll';
+
+/**
+ * Set right before navigating cross-page to a hash target. Lets the next
+ * pathname-change effect apply the hash itself (after the page is already
+ * pinned to the top), instead of relying on the browser/Next's own
+ * hash-scroll, which lands at the raw element offset and causes a visible
+ * jump-then-correct flash.
+ */
+let pendingHash: string | null = null;
 
 export function scrollToWaitlist() {
-  inertiaScrollToId('waitlist');
+  inertiaScrollToTop();
 }
 
 export function scrollToProduct() {
   inertiaScrollToId('product');
 }
 
+export function scrollToTop() {
+  inertiaScrollToTop();
+}
+
 function scrollToHash() {
   const id = window.location.hash.slice(1);
   if (!id) return;
+  if (id === 'waitlist') {
+    inertiaScrollToTop();
+    return;
+  }
   inertiaScrollToId(id);
 }
 
@@ -55,6 +73,17 @@ export function HashScroll() {
       return;
     }
 
+    if (pendingHash) {
+      // Cross-page navigation we drove ourselves: land pinned at the top
+      // first, then attach the hash with no scroll side effects, so there
+      // is never a wrong-position frame to correct away from.
+      const hash = pendingHash;
+      pendingHash = null;
+      pinTop();
+      window.history.replaceState(null, '', `${pathname}#${hash}`);
+      return;
+    }
+
     if (!window.location.hash) pinTop();
     else scrollToHash();
   }, [pathname]);
@@ -62,16 +91,55 @@ export function HashScroll() {
   return null;
 }
 
-export function WaitlistJump({ children, className }: { children: ReactNode; className?: string }) {
+export function HomeLogoLink({ children, className }: { children: ReactNode; className?: string }) {
+  const pathname = usePathname();
+  const router = useRouter();
+
   function onClick(event: MouseEvent<HTMLAnchorElement>) {
     event.preventDefault();
-    scrollToWaitlist();
-    window.history.replaceState(null, '', '/#waitlist');
+    if (pathname !== '/') {
+      router.push('/');
+      return;
+    }
+    scrollToTop();
+    window.history.replaceState(null, '', '/');
   }
 
   return (
-    <a href="/#waitlist" className={className} onClick={onClick}>
+    <Link href="/" className={className} onClick={onClick}>
       {children}
-    </a>
+    </Link>
+  );
+}
+
+/**
+ * Shared click handler for any "Join waitlist" entry point. Same-page: animate
+ * smoothly to the top. Cross-page: navigate first and let the pathname-change
+ * effect above apply the hash once we're already pinned to the top, so there
+ * is never a wrong-position frame to flash and correct away from.
+ */
+export function useWaitlistJump() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  return function onWaitlistJump(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    if (pathname !== '/') {
+      pendingHash = 'waitlist';
+      router.push('/');
+      return;
+    }
+    scrollToWaitlist();
+    window.history.replaceState(null, '', '/#waitlist');
+  };
+}
+
+export function WaitlistJump({ children, className }: { children: ReactNode; className?: string }) {
+  const onClick = useWaitlistJump();
+
+  return (
+    <Link href="/#waitlist" className={className} onClick={onClick}>
+      {children}
+    </Link>
   );
 }

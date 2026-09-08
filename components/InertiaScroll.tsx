@@ -263,35 +263,53 @@ export function inertiaPinTop() {
   });
 }
 
-export function inertiaScrollToId(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
+function offsetDocumentY(el: HTMLElement) {
+  let y = 0;
+  let node: HTMLElement | null = el;
+  while (node) {
+    y += node.offsetTop;
+    node = node.offsetParent instanceof HTMLElement ? node.offsetParent : null;
+  }
+  return y;
+}
 
-  const unclamped = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-  const target = clamp(unclamped, 0, maxScroll());
+function inertiaScrollTo(target: number) {
+  const dest = clamp(target, 0, maxScroll());
 
   if (prefersReducedMotion()) {
     stopLoop();
-    engine.position = target;
+    engine.position = dest;
     engine.velocity = 0;
     engine.target = null;
-    window.scrollTo(0, target);
+    window.scrollTo(0, dest);
     return;
   }
 
   if (!INERTIA_ENABLED || !isFinePointer()) {
     stopLoop();
-    engine.position = target;
+    engine.position = dest;
     engine.velocity = 0;
     engine.target = null;
-    window.scrollTo({ top: target, behavior: 'smooth' });
+    window.scrollTo({ top: dest, behavior: 'smooth' });
     return;
   }
 
   engine.position = window.scrollY;
   engine.velocity = 0;
-  engine.target = target;
+  engine.target = dest;
   ensureLoop();
+}
+
+export function inertiaScrollToTop() {
+  inertiaScrollTo(0);
+}
+
+export function inertiaScrollToId(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const unclamped = offsetDocumentY(el) - HEADER_OFFSET;
+  inertiaScrollTo(unclamped);
 }
 
 export function InertiaScroll() {

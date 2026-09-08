@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { HomeLogoLink } from '@/components/HashScroll';
 import { SiteNav } from '@/components/SiteNav';
 
 const EXPLORE_LINKS = [
@@ -23,7 +24,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 h-20 bg-canvas">
       <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-5 md:px-8">
-        <Link href="/" className="flex shrink-0 items-center">
+        <HomeLogoLink className="flex shrink-0 items-center">
           <Image
             src="/logos/wavepointTop.png"
             alt="Wavepoint"
@@ -33,7 +34,7 @@ export function SiteHeader() {
             quality={100}
             priority
           />
-        </Link>
+        </HomeLogoLink>
         <SiteNav />
       </div>
     </header>

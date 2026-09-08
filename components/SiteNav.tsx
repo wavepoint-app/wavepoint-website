@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { scrollToProduct, scrollToWaitlist } from '@/components/HashScroll';
+import { scrollToProduct, useWaitlistJump } from '@/components/HashScroll';
 import { cn } from '@/lib/cn';
 
 const NAV_LINKS = [
@@ -22,6 +22,7 @@ const ctaClass =
 export function SiteNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const onWaitlistJump = useWaitlistJump();
 
   useEffect(() => {
     setOpen(false);
@@ -71,9 +72,7 @@ export function SiteNav() {
         className={ctaClass}
         onClick={(event) => {
           setOpen(false);
-          if (pathname !== '/') return;
-          event.preventDefault();
-          scrollToWaitlist();
+          onWaitlistJump(event);
         }}
       >
         Join waitlist
