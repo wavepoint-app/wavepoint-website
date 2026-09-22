@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalPage eyebrow="Legal" title="Privacy Policy" updated="August 30, 2026">
+    <LegalPage eyebrow="Legal" title="Privacy Policy" updated="September 22, 2026">
       <LegalSection title="Who we are">
         <p>
           Wavepoint is a campus navigation and social app. This policy describes the data the
@@ -21,21 +21,36 @@ export default function PrivacyPage() {
 
       <LegalSection title="Account information">
         <p>
-          When you create an account we store the email address and password you provide through
-          Supabase Auth. We also store the display name and optional profile photo you choose.
-          Passwords are hashed by the authentication provider; we never see them in plaintext.
+          You can create an account with an email and password, or sign in with Google. On iPhone
+          the app also offers Sign in with Apple. We store the email address for the account,
+          including a private relay address if you use Apple and choose to hide your email, plus
+          the display name and optional profile photo you choose. Passwords are hashed by the
+          authentication provider; we never see them in plaintext. Google or Apple provides the
+          name and email for that sign-in when you use it.
         </p>
       </LegalSection>
 
       <LegalSection title="Location">
         <p>
-          While you use the map, the app reads precise GPS in the foreground so we can show where
-          you are and route you indoors. That live GPS reading is not stored on our servers.
+          While the app is open, it reads precise GPS to show your position and give walking
+          directions. We store those coordinates only if you turn on “Share my location” in
+          Settings. The stored location is visible only to friends you have accepted, and only
+          while the app is in the foreground. Turning sharing off deletes that location. We do
+          not collect location in the background.
         </p>
         <p>
-          If you choose to share a location pin with friends, we store only the building (and
-          optional room) you drop, and we show it only to the friends you selected. Turning off
-          “Share my location” in Settings clears your pin.
+          You can also drop a location pin. We store the building and optional room, and show it
+          only to the friends or group you choose. Turning off “Share my location” does not
+          remove pins. Deleting your account does.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="Map search and routing">
+        <p>
+          Place search sends your query to Photon, operated by Komoot, at photon.komoot.io.
+          Walking directions send the start and end coordinates to the FOSSGIS routing server at
+          routing.openstreetmap.de. Both services use OpenStreetMap data. Those requests do not
+          include your name, email, or account id.
         </p>
       </LegalSection>
 
