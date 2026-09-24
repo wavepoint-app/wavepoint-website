@@ -3,12 +3,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { scrollToProduct, scrollToTeam, useWaitlistJump } from '@/components/HashScroll';
+import { scrollToProduct, useWaitlistJump } from '@/components/HashScroll';
 import { cn } from '@/lib/cn';
 
 const NAV_LINKS = [
   { href: '/#product', label: 'Product' },
-  { href: '/#team', label: 'Meet the team' },
+  { href: '/team', label: 'Meet the team' },
   { href: '/about', label: 'About' },
 ] as const;
 
@@ -57,18 +57,10 @@ export function SiteNav() {
             )}
             aria-current={isActive(pathname, link.href) ? 'page' : undefined}
             onClick={(event) => {
-              if (pathname !== '/') return;
-              if (link.href === '/#product') {
-                event.preventDefault();
-                scrollToProduct();
-                window.history.replaceState(null, '', '/#product');
-                return;
-              }
-              if (link.href === '/#team') {
-                event.preventDefault();
-                scrollToTeam();
-                window.history.replaceState(null, '', '/#team');
-              }
+              if (link.href !== '/#product' || pathname !== '/') return;
+              event.preventDefault();
+              scrollToProduct();
+              window.history.replaceState(null, '', '/#product');
             }}
           >
             {link.label}
@@ -128,18 +120,10 @@ export function SiteNav() {
                 href={link.href}
                 onClick={(event) => {
                   setOpen(false);
-                  if (pathname !== '/') return;
-                  if (link.href === '/#product') {
-                    event.preventDefault();
-                    scrollToProduct();
-                    window.history.replaceState(null, '', '/#product');
-                    return;
-                  }
-                  if (link.href === '/#team') {
-                    event.preventDefault();
-                    scrollToTeam();
-                    window.history.replaceState(null, '', '/#team');
-                  }
+                  if (link.href !== '/#product' || pathname !== '/') return;
+                  event.preventDefault();
+                  scrollToProduct();
+                  window.history.replaceState(null, '', '/#product');
                 }}
                 className={cn(
                   'hover-soft rounded-xl px-3 py-3 hover:bg-white hover:text-primary',

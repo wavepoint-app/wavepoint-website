@@ -1,7 +1,7 @@
 import { existsSync } from 'fs';
 import path from 'path';
 import Image from 'next/image';
-import { FOUNDERS, LEADS, type TeamMember } from '@/lib/team';
+import { FOUNDERS, type TeamMember } from '@/lib/team';
 
 function initials(name: string) {
   return name
@@ -41,9 +41,9 @@ function MemberCard({ member }: { member: TeamMember }) {
           {initials(member.name)}
         </div>
       )}
-      <h3 className="mt-4 text-[16px] font-bold tracking-[-0.2px] text-ink-strong transition-colors duration-300 group-hover:text-primary">
+      <h2 className="mt-4 text-[16px] font-bold tracking-[-0.2px] text-ink-strong transition-colors duration-300 group-hover:text-primary">
         {member.name}
-      </h3>
+      </h2>
       {member.role ? (
         <p className="mt-1 text-[13.5px] font-medium text-ink-muted">{member.role}</p>
       ) : null}
@@ -51,33 +51,22 @@ function MemberCard({ member }: { member: TeamMember }) {
   );
 }
 
-function MemberGrid({ title, members }: { title: string; members: TeamMember[] }) {
-  if (members.length === 0) return null;
-
-  return (
-    <div className="mt-10 first:mt-8">
-      <h3 className="text-[13px] font-bold uppercase tracking-[1.2px] text-secondary">{title}</h3>
-      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {members.map((member) => (
-          <MemberCard key={member.name} member={member} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function TeamSection() {
   return (
-    <section id="team" className="scroll-mt-[80px] bg-surface-muted px-5 py-16 md:px-8 md:py-20">
+    <section className="bg-surface-muted px-5 pb-20 pt-6 md:px-8 md:pb-24 md:pt-10">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mt-2 text-[32px] font-extrabold tracking-[-1px] text-ink-strong md:text-[40px]">
+        <p className="text-xs font-bold uppercase tracking-[1.2px] text-ink-muted">Team</p>
+        <h1 className="mt-2 text-[32px] font-extrabold tracking-[-1px] text-ink-strong md:text-[48px] md:tracking-[-1.4px]">
           Meet the team
-        </h2>
-        <p className="mt-3 max-w-xl text-[15px] font-medium leading-6 text-ink-muted">
+        </h1>
+        <p className="mt-3 max-w-xl text-[15px] font-medium leading-6 text-ink-muted md:text-[16px] md:leading-7">
           The founders building Wavepoint at Texas Convergent.
         </p>
-        <MemberGrid title="Founders" members={FOUNDERS} />
-        <MemberGrid title="Leads" members={LEADS} />
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {FOUNDERS.map((member) => (
+            <MemberCard key={member.name} member={member} />
+          ))}
+        </div>
       </div>
     </section>
   );

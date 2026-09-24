@@ -22,10 +22,6 @@ export function scrollToProduct() {
   inertiaScrollToId('product');
 }
 
-export function scrollToTeam() {
-  inertiaScrollToId('team');
-}
-
 export function scrollToTop() {
   inertiaScrollToTop();
 }

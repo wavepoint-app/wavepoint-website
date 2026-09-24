@@ -2,7 +2,6 @@ import { AnimatedWaves } from '@/components/AnimatedWaves';
 import { WaitlistJump } from '@/components/HashScroll';
 import { HowItWorks } from '@/components/HowItWorks';
 import { StoryChapter } from '@/components/StoryChapter';
-import { TeamSection } from '@/components/TeamSection';
 import { WaitlistForm } from '@/components/WaitlistForm';
 import { WavingLogo } from '@/components/WavingLogo';
 
@@ -90,8 +89,6 @@ export default function HomePage() {
       />
 
       <HowItWorks />
-
-      <TeamSection />
 
       <section className="bg-canvas px-5 py-16 md:px-8 md:py-24">
         <div className="mx-auto max-w-6xl text-center md:text-left">
