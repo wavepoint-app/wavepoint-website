@@ -1,7 +1,5 @@
-import { existsSync } from 'fs';
-import path from 'path';
 import Image from 'next/image';
-import { FOUNDERS, type TeamMember } from '@/lib/team';
+import { FOUNDERS, teamPhotoUrl, type TeamMember } from '@/lib/team';
 
 function initials(name: string) {
   return name
@@ -12,14 +10,8 @@ function initials(name: string) {
     .join('');
 }
 
-function photoSrc(filename?: string) {
-  if (!filename) return null;
-  const filePath = path.join(process.cwd(), 'public', 'team', filename);
-  return existsSync(filePath) ? `/team/${filename}` : null;
-}
-
 function MemberCard({ member }: { member: TeamMember }) {
-  const src = photoSrc(member.photo);
+  const src = teamPhotoUrl(member.photo);
 
   return (
     <article className="group flex flex-col items-center rounded-card border border-line bg-white px-4 py-6 text-center shadow-[0_1px_6px_rgba(15,23,42,0.04)] transition duration-300 ease-out hover:-translate-y-1.5 hover:border-primary/25 hover:shadow-[0_12px_28px_rgba(11,97,126,0.14)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
