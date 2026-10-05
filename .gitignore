@@ -13,3 +13,6 @@ next-env.d.ts
 .cursorrules
 AGENTS.md
 .cursor/
+
+# Team headshots live in Supabase Storage (website-assets/team). Drop files here only to run scripts/upload-team-photos.mjs.
+/public/team/
