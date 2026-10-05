@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Reveal } from '@/components/Reveal';
 import { cn } from '@/lib/cn';
 
@@ -14,6 +15,7 @@ export function StoryChapter({
   inverted = false,
   muted = false,
   id,
+  media,
 }: {
   eyebrow: string;
   title: string;
@@ -22,6 +24,7 @@ export function StoryChapter({
   inverted?: boolean;
   muted?: boolean;
   id?: string;
+  media?: ReactNode;
 }) {
   return (
     <section
@@ -33,38 +36,49 @@ export function StoryChapter({
       )}
     >
       <Reveal className="mx-auto w-full max-w-6xl">
-        <p
+        <div
           className={cn(
-            'text-xs font-bold uppercase tracking-[1.2px]',
-            inverted ? 'text-white/70' : 'text-ink-muted'
+            media
+              ? 'grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(260px,320px)] md:gap-12'
+              : undefined
           )}
         >
-          {eyebrow}
-        </p>
-        <h2 className="mt-3 max-w-3xl text-[32px] font-extrabold leading-[1.1] tracking-[-1px] md:text-[52px] md:tracking-[-1.6px]">
-          {title}
-          {titleLine2 ? (
-            <>
-              <br />
-              {titleLine2}
-            </>
-          ) : null}
-        </h2>
-        <ul className="mt-10 grid gap-8 md:grid-cols-2">
-          {points.map((point) => (
-            <li key={point.title} className="max-w-lg">
-              <h3 className="text-[20px] font-bold tracking-[-0.4px]">{point.title}</h3>
-              <p
-                className={cn(
-                  'mt-2 text-[15px] font-medium leading-6',
-                  inverted ? 'text-white/80' : 'text-ink-muted'
-                )}
-              >
-                {point.body}
-              </p>
-            </li>
-          ))}
-        </ul>
+          <div>
+            <p
+              className={cn(
+                'text-xs font-bold uppercase tracking-[1.2px]',
+                inverted ? 'text-white/70' : 'text-ink-muted'
+              )}
+            >
+              {eyebrow}
+            </p>
+            <h2 className="mt-3 max-w-3xl text-[32px] font-extrabold leading-[1.1] tracking-[-1px] md:text-[52px] md:tracking-[-1.6px]">
+              {title}
+              {titleLine2 ? (
+                <>
+                  <br />
+                  {titleLine2}
+                </>
+              ) : null}
+            </h2>
+            <ul className={cn('mt-10 grid gap-8', media ? 'md:grid-cols-1' : 'md:grid-cols-2')}>
+              {points.map((point) => (
+                <li key={point.title} className="max-w-lg">
+                  <h3 className="text-[20px] font-bold tracking-[-0.4px]">{point.title}</h3>
+                  <p
+                    className={cn(
+                      'mt-2 text-[15px] font-medium leading-6',
+                      inverted ? 'text-white/80' : 'text-ink-muted'
+                    )}
+                  >
+                    {point.body}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {media ? <div className="mx-auto w-full max-w-[320px] md:mx-0 md:justify-self-end">{media}</div> : null}
+        </div>
       </Reveal>
     </section>
   );
