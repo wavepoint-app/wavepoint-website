@@ -1,9 +1,11 @@
 import { AnimatedWaves } from '@/components/AnimatedWaves';
+import { IndoorMapDemo } from '@/components/demo/IndoorMapDemo';
 import { WaitlistJump } from '@/components/HashScroll';
 import { HowItWorks } from '@/components/HowItWorks';
 import { StoryChapter } from '@/components/StoryChapter';
 import { WaitlistForm } from '@/components/WaitlistForm';
 import { WavingLogo } from '@/components/WavingLogo';
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
@@ -53,6 +55,17 @@ export default function HomePage() {
             body: 'Outdoor walking directions take you to the building entrance, then Wavepoint hands you the indoor path.',
           },
         ]}
+        media={
+          <div className="flex flex-col items-center gap-3">
+            <IndoorMapDemo compact />
+            <Link
+              href="/demo"
+              className="hover-underline text-sm font-semibold text-primary"
+            >
+              Try the full demo →
+            </Link>
+          </div>
+        }
       />
 
       <StoryChapter
