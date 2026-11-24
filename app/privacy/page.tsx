@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalPage eyebrow="Legal" title="Privacy Policy" updated="September 22, 2026">
+    <LegalPage eyebrow="Legal" title="Privacy Policy" updated="November 24, 2026">
       <LegalSection title="Who we are">
         <p>
           Wavepoint is a campus navigation and social app. This policy describes the data the
@@ -89,6 +89,45 @@ export default function PrivacyPage() {
           We use it only to operate Wavepoint: sign you in, show friends and groups, route you
           around campus, and surface alerts. We may use reports you send about other users to
           enforce our community standards.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="How long we keep data">
+        <p>We keep each kind of data only as long as it is needed to run the feature:</p>
+        <ul className="list-disc space-y-1 pl-5">
+          <li>
+            Account information (email, name, profile photo) stays until you delete your account.
+          </li>
+          <li>
+            Live GPS is stored only while “Share my location” is on. Turning sharing off deletes
+            that location right away. We do not keep a background location history.
+          </li>
+          <li>
+            Location pins stay until you delete the pin or delete your account. Turning off
+            “Share my location” does not remove pins.
+          </li>
+          <li>
+            Friends, groups, and calendar events stay until you remove them or delete your account.
+            Groups you solely administer are removed when your account is deleted.
+          </li>
+          <li>
+            Motion and step data used for indoor walking stay on your device and are not uploaded,
+            so we do not retain them on our servers.
+          </li>
+          <li>
+            Map search and routing requests go to Photon and the FOSSGIS routing server for that
+            request only; we do not keep a separate copy of those queries tied to your account.
+          </li>
+          <li>
+            Campus alerts you submit can remain on the map as anonymous reports after you delete
+            your account: the alert text may stay, but your user id is removed so it is no longer
+            tied to you.
+          </li>
+        </ul>
+        <p>
+          When you delete your account, we permanently delete the authentication record, profile,
+          friends, groups you solely administered, calendar events, and photos stored under your
+          account, as described below.
         </p>
       </LegalSection>
 
